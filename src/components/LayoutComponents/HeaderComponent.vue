@@ -12,8 +12,12 @@
                 <a class="navbar-brand" href=""><img src=""/>MY LOGO</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="">The list of repositories</a></li>
+                <ul v-if="userIsAuthenticated" class="nav navbar-nav navbar-right">
+                    <li><a href="#" v-on:click.prevent="onLogout()">Logout</a></li>
+                </ul>
+                <ul v-if="!userIsAuthenticated" class="nav navbar-nav navbar-right">
+                    <li><router-link :to="{ name: 'SignUp'}">Sign Up</router-link></li>
+                    <li><router-link :to="{ name: 'SignIn'}">Sign In</router-link></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -22,6 +26,17 @@
 
 <script>
 export default {
+  computed: {
+    userIsAuthenticated () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+    }
+  },
+  methods: {
+    onLogout () {
+      this.$store.dispatch('logout')
+      return this.$router.push('/signin')
+    }
+  }
 }
 </script>
 
