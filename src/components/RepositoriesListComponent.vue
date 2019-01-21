@@ -37,7 +37,8 @@ export default {
   },
   data () {
     return {
-      loading: true
+      loading: true,
+      pageNumber: 1
     }
   },
   computed: {
@@ -50,6 +51,18 @@ export default {
       this.loading = false;
     })
 
+    let vm = this;
+    $(window).scroll(function() {
+      if (($(window).innerHeight() + $(window).scrollTop()) >= $("body").height()) {
+        if (vm.loading === false) {
+          vm.loading = true
+          vm.pageNumber++
+          vm.$store.dispatch('getRepositories', vm.pageNumber).then(() => {
+            vm.loading = false
+          })
+        }
+      }
+    });
   }
 }
 </script>

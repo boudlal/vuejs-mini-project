@@ -29,12 +29,12 @@ export const store = new Vuex.Store({
   mutations: {
     getRepositories (state, payload) {
       this.state.repositories = this.state.repositories.concat(payload)
-      return this.state.repositories
+      return this.state.repositories.concat(payload)
     }
   },
   actions: {
-    getRepositories (context) {
-      return axios.get(`https://api.github.com/search/repositories?q=created:>2017-10-22&sort=stars&order=desc`)
+    getRepositories (context, page) {
+      return axios.get(`https://api.github.com/search/repositories?q=created:>2017-10-22&sort=stars&order=desc&page=${page}`)
       .then((res) => {
         context.commit('getRepositories', res.data.items)
       })
