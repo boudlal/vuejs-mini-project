@@ -16,6 +16,8 @@ Live demo: https://warm-coast-16097.herokuapp.com
 
 -The code is well structured and free of any ambiguity. It is easily readable for any vueJs developer. Hence, no need for a a lot of comments.
 
+-I uploaded the project with firebase config, so it be easy for running.
+
 ## Used modules
 axios: Make http requests and supports promises
 
