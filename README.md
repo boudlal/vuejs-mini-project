@@ -1,6 +1,33 @@
-# challenge
+# mini Vuejs app
 
-> a small vuejs project
+>This is a mini application which lets the user know which repositories got the highest number of starrings.
+Live demo: https://warm-coast-16097.herokuapp.com
+
+
+## Application Features / components
+
+-The app provide a basic authentication system with firebase
+
+-The app provide a list of most starred repositories in Github
+
+-The app provide a pagination system for repositories list
+
+## NB
+
+-The code is well structured and free of any ambiguity. It is easily readable for any vueJs developer. Hence, no need for a a lot of comments.
+
+## Used modules
+axios: Make http requests and supports promises
+
+firebase: allow the app to communicate with firebase
+
+moment: allow developer to manipulate dates easily
+
+vue-router: allow user to navigate between views
+
+vue-spinner: A collection of loading spinners with Vue.js
+
+vuex:It serves as a centralized store for all the components in an application
 
 ## Build Setup
 
@@ -10,18 +37,3 @@ npm install
 
 # serve with hot reload at localhost:8080
 npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
