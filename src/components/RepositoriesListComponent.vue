@@ -47,11 +47,13 @@ export default {
     }
   },
   created () {
+    //
     this.$store.dispatch('getRepositories', this.pageNumber).then(() => {
       this.loading = false;
     })
 
     let vm = this;
+    //send request to the Api when the scroll is in the bottom of the page
     $(window).scroll(function() {
       if (($(window).innerHeight() + $(window).scrollTop()) >= $("body").height()) {
         if (vm.loading === false) {
@@ -80,7 +82,7 @@ export default {
 }
 
 img {
-  width: 60%;
+  width: 160px;
   border: 2px solid #cccccc;
   border-radius: 100%;
   padding: 6px;
@@ -128,6 +130,13 @@ hr {
 
 .loader {
   margin: 10px
+}
+
+@media only screen and (max-width: 600px) {
+  .card-block span {
+    margin-top: 5px;
+    display: block;
+  }
 }
 
 </style>

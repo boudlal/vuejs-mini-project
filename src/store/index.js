@@ -5,7 +5,6 @@ import axios from 'axios'
 import moment from 'moment'
 
 Vue.use(Vuex)
-Vue.use(axios)
 
 export const store = new Vuex.Store({
   state: {
@@ -28,7 +27,7 @@ export const store = new Vuex.Store({
           user_url: x.owner.html_url,
           created_at: moment().diff(moment(x.created_at), 'days')
         }
-        obj.title = x.name.length >= 30 ? x.name.substring(0, 30)+"..." : x.name
+        obj.title = x.name.length >= 30 ? x.name.substring(0, 40)+"..." : x.name
         if (x.description)
           obj.description = x.description.length >= 250 ? x.description.substring(0, 250)+"..." : x.description
 
