@@ -11,12 +11,13 @@ export const store = new Vuex.Store({
   state: {
     repositories: [],
     user: null,
-    authError: null
+    authError: null,
+    loading: true
   },
   getters: {
     repositories (state) {
       return state.repositories.map((x) => {
-        return {
+        let obj = {
           title: x.name.substring(0, 30),
           url: x.html_url,
           description: x.description,
@@ -24,8 +25,14 @@ export const store = new Vuex.Store({
           issues_num: x.open_issues,
           user_name: x.owner.login,
           user_avatar: x.owner.avatar_url,
+          user_url: x.owner.html_url,
           created_at: moment().diff(moment(x.created_at), 'days')
         }
+        obj.title = x.name.length >= 30 ? x.name.substring(0, 30)+"..." : x.name
+        if (x.description)
+          obj.description = x.description.length >= 250 ? x.description.substring(0, 250)+"..." : x.description
+
+        return obj
       })
     },
     user (state) {
@@ -33,6 +40,9 @@ export const store = new Vuex.Store({
     },
     authError (state) {
       return state.authError
+    },
+    loading (state) {
+      return state.loading
     }
   },
   mutations: {
@@ -45,6 +55,9 @@ export const store = new Vuex.Store({
     },
     setAuthError (state, payload) {
       return state.authError = payload
+    },
+    setLoading (state, payload) {
+      return state.loading = payload
     }
   },
   actions: {
@@ -82,6 +95,10 @@ export const store = new Vuex.Store({
     logout (context) {
       firebase.auth().signOut();
       context.commit('setUser', null)
+    },
+
+    changeLoading (context, payload) {
+      context.commit('setLoading', payload)
     }
   }
 })

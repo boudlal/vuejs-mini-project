@@ -41,5 +41,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
+.navbar {
+  background-color: #ecf0f1
+}
 </style>

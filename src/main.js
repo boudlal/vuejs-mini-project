@@ -26,7 +26,10 @@ new Vue({
     })
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        this.$store.dispatch('changeLoading', true)
         this.$store.dispatch('refreshAuthState', user)
+      }else {
+        this.$store.dispatch('changeLoading', false)
       }
     })
   }

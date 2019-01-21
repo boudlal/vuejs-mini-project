@@ -4,18 +4,18 @@
       <h2>Most strarred repositories</h2>
     </div>
     <div class="row">
-    	<div v-for="repo in repositories" class="card col-md-12 p-3">
+    	<div v-for="repo in repositories" class="card border col-md-12 p-3">
     	 <div class="row ">
     			<div class="col-md-3">
     				<img class="w-100" :src="repo.user_avatar">
     			</div>
     		<div class="col-md-8">
-    			<div class="card-block">
+    			<div class="card-block border">
     					<a :href="repo.url"><h3 class="card-title">{{ repo.title }}</h3></a>
     					<p class="card-text text-justify">{{ repo.description }}</p>
-    					<a href="https://www.google.com" class="btn btn-default">Stars: {{ repo.stars_num }}</a>
-    					<a href="https://www.google.com" class="btn btn-default">Issues: {{ repo.issues_num}}</a>
-              <span>Submitted {{ repo.created_at }} days ago by {{ repo.user_name}}</span>
+    					<a class="btn btn-default">Stars: {{ repo.stars_num }}</a>
+    					<a class="btn btn-default">Issues: {{ repo.issues_num}}</a>
+              <span>Submitted {{ repo.created_at }} days ago by <a :href="repo.user_url">{{ repo.user_name}}</a></span>
     			</div>
     		</div>
     		</div>
@@ -81,6 +81,10 @@ export default {
 
 img {
   width: 60%;
+  border: 2px solid #cccccc;
+  border-radius: 100%;
+  padding: 6px;
+  background-color: white;
 }
 
 .row {
@@ -94,8 +98,11 @@ img {
 }
 
 .card {
-  border-radius:0;
-  margin:10px auto;
+  border-radius: 15px;
+  margin: 10px auto;
+  border: 1px solid #cccccc;
+  padding: 15px;
+  background-color: #ecf0f1
 }
 
 .card-block {
@@ -105,7 +112,6 @@ img {
 .card-text {
 	margin-top:10px;
 	margin-bottom: 10px;
-	background-color:#FFFFFF;
 	color:#000000;
 }
 
